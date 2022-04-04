@@ -68,6 +68,18 @@ public class Tower {
 			elv.setGoUp(true);
 			
 			for(int i=0;i<flrs;i++) {
+				Queue<Person> qu=(Queue<Person>)qus[i];
+				if(qu!=null) {
+					while(qu.head()!=null && qu.head().getDirect()>0) {
+						elv.getUpStack().add(qu.poll());
+					}
+					while(qu.head()!=null && qu.head().getDirect()==0) {
+						floors.setNodeVal(qu.poll());
+					}
+					while(qu.head()!=null && qu.head().getDirect()<0) {
+						elv.getDownStack().add(qu.poll());
+					}
+				}
 				if(elv.isGoUp()) {
 					if(elv.getUpStack().size()!=0) {
 						while(elv.getUpStack().size()!=0 && elv.getUpStack().top().getDstnyFlr()==(i+1)) {

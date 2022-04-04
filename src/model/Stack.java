@@ -20,7 +20,11 @@ public class Stack<E> {
 	}
 	
 	public E top() {
-		return topList.getItem();
+		if(topList!=null) {
+			return topList.getItem();
+		}else {
+			return null;
+		}
 	}
 	
 	public E pop() {

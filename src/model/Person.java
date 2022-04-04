@@ -1,15 +1,19 @@
 package model;
 
-public class Person {
+public class Person implements Comparable<Person>{
 	
 	private String name;
 	private int  iniFloor;
 	private int dstnyOff;
+	private int direct;
+	private int dstnyFlr;
 	
-	public Person(String name, int iniFloor, int dstnyOff) {
+	public Person(String name, int iniFloor, int dstnyOff, int direct, int dstnyFlr) {
 		this.name=name;
 		this.iniFloor=iniFloor;
 		this.dstnyOff=dstnyOff;
+		this.direct=direct;
+		this.dstnyFlr=dstnyFlr;
 	}
 
 	public String getName() {
@@ -36,5 +40,28 @@ public class Person {
 		this.dstnyOff = dstnyOff;
 	}
 	
+	public int getDirect() {
+		return direct;
+	}
+
+	public void setDirect(int direct) {
+		this.direct = direct;
+	}
+
+	public int getDstnyFlr() {
+		return dstnyFlr;
+	}
+
+	public void setDstnyFlr(int dstnyFlr) {
+		this.dstnyFlr = dstnyFlr;
+	}
+
+	@Override
+	public int compareTo(Person o) {
+		Person A=this;
+		Person B=(Person) o;
+		int ans=A.iniFloor-B.iniFloor;
+		return ans;
+	}
 	
 }
